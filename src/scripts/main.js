@@ -9,7 +9,7 @@ const initScroll = () => {
   const scroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
-    lerp: 0.03,
+    lerp: 0.05,
     smoothMobile: true,
     resetNativeScroll: true,
   });
@@ -68,8 +68,24 @@ const replaceCaptions = () => {
   });
 };
 
+const toggleMenu = () => {
+  const content = document.getElementsByClassName('content')[0];
+  const header = document.querySelector('header');
+  const menu = document.getElementById('menu');
+  const arrWords = [...menu.getElementsByClassName('word')];
+
+  arrWords.map((word) => {
+    word.classList.toggle('translate-menu');
+  });
+  content.classList.toggle('with-menu');
+  header.classList.toggle('with-menu');
+};
+
 window.onload = () => {
   removeLoader();
   initScroll();
   replaceCaptions();
+
+  const menuButton = document.getElementsByClassName('menu-btn')[0];
+  menuButton.addEventListener('click', toggleMenu);
 };

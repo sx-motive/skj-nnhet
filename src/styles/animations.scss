@@ -4,6 +4,9 @@ span.wrap-word {
   display: inline-block;
   span {
     display: block;
-    transition: transform 2.5s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 2.5s $anim;
+    &.translate-menu {
+      transform: translate(0, 0) !important;
+    }
   }
 }

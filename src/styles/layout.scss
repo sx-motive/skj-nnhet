@@ -5,8 +5,6 @@ header {
   right: 0;
   z-index: 100;
   color: $c-black;
-  mix-blend-mode: overlay;
-  background-color: transparent;
   .container {
     display: flex;
     align-items: center;
@@ -17,6 +15,59 @@ header {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+    }
+    .menu-btn {
+      cursor: pointer;
+    }
+  }
+
+  &.with-menu {
+    .menu-btn {
+      color: $c-white;
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: $c-black;
+  color: $c-white;
+  z-index: -1;
+  .menu {
+    position: relative;
+    width: 30%;
+    height: 100%;
+    padding: $p-layout;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    ul.primary-nav {
+      position: relative;
+      margin-top: 150px;
+      li a {
+        font-size: $fs-menu;
+        &:hover {
+          transform: skew(10deg) !important;
+        }
+      }
+    }
+    .menu-footer {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    ul.secondary-nav {
+      position: relative;
+      display: flex;
+      gap: 1rem;
+      li a {
+        color: $c-middle;
+      }
     }
   }
 }
