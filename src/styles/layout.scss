@@ -15,13 +15,18 @@ header {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      transition: color 0.4s ease-in-out;
     }
     .menu-btn {
       cursor: pointer;
+      transition: color 0.4s ease-in-out;
     }
   }
 
   &.with-menu {
+    .logo {
+      color: $c-white;
+    }
     .menu-btn {
       color: $c-white;
     }

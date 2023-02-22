@@ -2,7 +2,7 @@ $ff-title: 'TNR', sans-serif;
 $ff-default: 'Apercu', sans-serif;
 
 $fs-default: 16px;
-$fs-caption-1: 7.5rem;
+$fs-caption-1: 7rem;
 $fs-caption-2: 5.5rem;
 $fs-caption-3: 3.4rem;
 $fs-menu: 6rem;
@@ -126,8 +126,11 @@ p {
 
   overflow: hidden;
   &.with-menu {
-    transform: skew(-15deg);
-    margin-left: 100px;
+    position: fixed;
+
+    transform: skew(-5deg) scale(0.7) translateY(-15%);
+    margin-left: 300px;
+    top: 0;
   }
 }
 
