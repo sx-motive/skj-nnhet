@@ -1,56 +1,16 @@
-import '../styles/main.scss';
-import LocomotiveScroll from 'locomotive-scroll';
+// import '../styles/main.scss';
+
+import loader from './loader';
+import { header } from './header';
+import { initScroll } from './scroll';
+import { followImg } from './animations';
+
+const body = document.querySelector('body');
+body.innerHTML += header;
+loader.percent();
 
 const getRandomInt = (max) => {
   return Math.floor(Math.random() * max);
-};
-
-const initScroll = () => {
-  const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
-    smooth: true,
-    lerp: 0.06,
-    smoothMobile: true,
-    resetNativeScroll: true,
-  });
-  scroll.on('call', (func, args, obj) => {
-    [...obj.el.children].map((item) => {
-      item.children[0].classList.toggle('transform-0');
-    });
-  });
-
-  scroll.on('scroll', (args) => {
-    var rounded = function (number) {
-      return +number.toFixed(2);
-    };
-    if (typeof args.currentElements['footer'] === 'object') {
-      let progress = args.currentElements['footer'].progress;
-      const preFooter = document.querySelector('[data-prefooter]');
-      preFooter.style.width = `${100 - rounded(progress) * 20}%`;
-    }
-    if (typeof args.currentElements['postwelcome'] === 'object') {
-      let progress = args.currentElements['postwelcome'].progress;
-
-      const welcomeImg = document.querySelector('[data-img-welcome]');
-
-      welcomeImg.style.transform = `scale(${1 + rounded(progress)})`;
-    }
-  });
-};
-
-const removeLoader = () => {
-  document.querySelector('body').classList.add('loaded');
-
-  setTimeout(() => {
-    document.querySelector('body').classList.remove('loading');
-    const hey = document.querySelectorAll('[data-intro]');
-    [...hey].map((item) => {
-      const children = [...item.children];
-      children.map((word) => {
-        word.children[0].classList.toggle('transform-0');
-      });
-    });
-  }, 100);
 };
 
 const replaceCaptions = () => {
@@ -99,47 +59,11 @@ const toggleMenu = () => {
   header.classList.toggle('with-menu');
 };
 
-const followImg = (e) => {
-  const wrap = document.querySelector('[data-img-follow]');
-  const viewportWidth = window.innerWidth;
-
-  const mousePos = {
-    X: e.clientX,
-    Y: e.clientY,
-    hor: () => (e.clientX > viewportWidth / 2 ? true : false),
-  };
-
-  wrap.style.transform = `
-  translate(${mousePos.X - 200}px, ${mousePos.Y - 300}px) 
-  rotate(${mousePos.hor() ? '-7deg' : '7deg'})
-  `;
-};
+replaceCaptions();
 
 window.onload = () => {
-  removeLoader();
+  loader.removeLoader();
   initScroll();
-  replaceCaptions();
-
-  const links = document.querySelectorAll('[data-link]');
-  const images = document.querySelectorAll('[data-img]');
-
-  document
-    .getElementsByClassName('essentials')[0]
-    .addEventListener('mousemove', followImg);
-
-  [...links].map((link) => {
-    const num = link.dataset.link;
-    link.addEventListener('mouseenter', () => {
-      [...images].forEach((image) => {
-        image.dataset.img == num ? image.classList.add('active') : '';
-      });
-    });
-    link.addEventListener('mouseleave', () => {
-      [...images].forEach((image) => {
-        image.dataset.img == num ? image.classList.remove('active') : '';
-      });
-    });
-  });
 
   const menuButton = document.getElementsByClassName('menu-btn')[0];
   menuButton.addEventListener('click', toggleMenu);

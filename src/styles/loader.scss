@@ -1,0 +1,58 @@
+div.loader {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: $c-light;
+  color: $c-black;
+
+  z-index: 200;
+  .persent-wrap {
+    position: absolute;
+    bottom: $p-layout;
+    right: $p-layout;
+    font-size: 20rem;
+    z-index: 10000;
+    color: $c-white;
+    overflow: hidden;
+    .anim-wrap-persent {
+      position: relative;
+      display: block;
+      transition: transform 1.5s $anim;
+      &.transform-100 {
+        transform: translateY(-100%);
+      }
+    }
+  }
+  .wrap-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.5s $anim;
+    background-color: $c-middle;
+    img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+body {
+  &.loading {
+    div.loader {
+      display: block;
+    }
+  }
+  div.loader {
+    display: none;
+  }
+}

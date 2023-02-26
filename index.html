@@ -5,13 +5,9 @@
     <link rel="icon" type="image/svg+xml" href="/fav.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Skjønnhet Skincare</title>
+    <link rel="stylesheet" href="./src/styles/main.scss" />
   </head>
   <body class="loading">
-    <header class="header">
-      <a class="logo" href="/" data-caption data-intro>Skjønnhet</a>
-      <span class="menu-btn" data-caption data-intro>menu</span>
-    </header>
-
     <div class="content" data-scroll-container>
       <section class="welcome" data-scroll-section>
         <div class="container">
@@ -315,29 +311,31 @@
       </footer>
     </div>
 
-    <div class="loading-screen">
+    <nav class="menu" id="menu">
+      <ul class="primary-nav">
+        <li><a data-caption data-text="Shop" href="/">Shop</a></li>
+        <li><a data-caption data-text="Lookbook" href="/">Lookbook</a></li>
+        <li><a data-caption data-text="About" href="/">About</a></li>
+      </ul>
+      <div class="menu-footer">
+        <ul class="secondary-nav">
+          <li><a data-caption href="/">Legal</a></li>
+          <li><a data-caption href="/">Contact</a></li>
+        </ul>
+        <ul class="social-nav">
+          <li><a data-caption href="/">vk</a></li>
+          <li><a data-caption href="/">inst</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="loader">
+      <div class="persent-wrap">
+        <span class="anim-wrap-persent"> <span id="persent">0</span>% </span>
+      </div>
+
       <div class="wrap-img">
         <img src="/welcome.webp" alt="skincare" />
-      </div>
-    </div>
-
-    <div class="modal">
-      <div class="menu" id="menu">
-        <ul class="primary-nav">
-          <li><a data-caption data-text="Shop" href="/">Shop</a></li>
-          <li><a data-caption data-text="Lookbook" href="/">Lookbook</a></li>
-          <li><a data-caption data-text="About" href="/">About</a></li>
-        </ul>
-        <div class="menu-footer">
-          <ul class="secondary-nav">
-            <li><a data-caption href="/">Legal</a></li>
-            <li><a data-caption href="/">Contact</a></li>
-          </ul>
-          <ul class="social-nav">
-            <li><a data-caption href="/">vk</a></li>
-            <li><a data-caption href="/">inst</a></li>
-          </ul>
-        </div>
       </div>
     </div>
 

@@ -186,55 +186,6 @@ input {
   }
 }
 
-body {
-  &.loading {
-    display: none;
-    .loading-screen {
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      left: 0;
-      top: 0;
-      right: 0;
-      background-color: $c-light;
-      color: $c-black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      z-index: 200;
-
-      .wrap-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        overflow: hidden;
-        transition: all 0.1s $anim;
-        img {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-    }
-  }
-
-  &.loaded {
-    display: flex;
-    .loading-screen {
-      .wrap-img {
-        width: 100%;
-      }
-    }
-    .loading-screen {
-      display: none;
-    }
-  }
-}
-
 .logo {
   font-family: $ff-title;
   text-transform: capitalize;
