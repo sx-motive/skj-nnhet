@@ -8,6 +8,7 @@ export const initScroll = () => {
     smoothMobile: true,
     resetNativeScroll: true,
   });
+
   scroll.on('call', (func, args, obj) => {
     [...obj.el.children].map((item) => {
       item.children[0].classList.toggle('transform-0');

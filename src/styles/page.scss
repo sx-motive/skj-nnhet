@@ -188,6 +188,8 @@ section.essentials {
           transition: all 1500ms $anim;
           font-family: $ff-title;
           font-size: calc($fs-caption-3 * 1.5);
+          color: $c-white;
+          mix-blend-mode: difference;
         }
       }
     }

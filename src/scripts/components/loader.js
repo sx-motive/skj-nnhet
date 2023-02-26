@@ -1,24 +1,29 @@
-import loaderImg from '/skincare-01.jpg';
+import loaderImg from '/welcome.webp';
 
-const loader = {
-  counter: 0,
+export const loader = {
   html: `
-    <div class="loading-screen">
-    <span></span>
-    //  <div class="wrap-img">
-    //   <img src="${loaderImg}" alt="skincare" />
-    //  </div>
+  <div class="loader">
+    <div class="persent-wrap">
+      <span class="anim-wrap-persent"> 
+        <span id="persent">0</span>%
+      </span>
     </div>
+    <div class="wrap-img">
+      <img src="${loaderImg}" alt="skincare" />
+    </div>
+  </div>
   `,
 
   percent: () => {
     const images = document.querySelectorAll('img');
     let counter = 0;
+
     [...images].map((img) => {
-      function loaded() {
-        counter += Math.round(100 / images.length);
+      const loaded = () => {
+        const step = Math.round(100 / images.length, 2);
+        counter += step;
         document.getElementById('persent').innerHTML = counter;
-      }
+      };
 
       if (img.complete) {
         loaded();
@@ -29,7 +34,6 @@ const loader = {
         });
       }
     });
-    return counter;
   },
 
   removeLoader: () => {
@@ -48,5 +52,3 @@ const loader = {
     }, 1500);
   },
 };
-
-export default loader;
