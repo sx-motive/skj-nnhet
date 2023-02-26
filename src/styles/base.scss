@@ -18,7 +18,7 @@ $c-middle: rgb(122, 122, 122);
 $c-border: rgb(231, 223, 214);
 
 $p-layout: 3rem;
-$b-radius: 1.2rem;
+$b-radius: 2rem;
 $b-radius-small: 0.8rem;
 
 $anim: cubic-bezier(0.19, 1, 0.22, 1);
@@ -94,23 +94,25 @@ h2 {
 
 h1,
 h2 {
+  position: relative;
   font-family: $ff-title;
   font-weight: 500;
   letter-spacing: -0.2rem;
   line-height: 0.75;
   text-transform: capitalize;
-  margin: 2rem 0;
+  margin: 1rem 0 2rem 0;
 }
 h3,
 h4,
 h5,
 h6 {
+  position: relative;
   font-family: $ff-title;
   font-size: $fs-caption-3;
   font-weight: 500;
   letter-spacing: -0.1rem;
   line-height: 0.9;
-  margin: 2rem 0;
+  margin: 1rem 0 2rem 0;
 }
 
 p {
@@ -164,51 +166,74 @@ button {
   }
 }
 
-body {
-  &.loading .loading-screen {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    right: 0;
-    background-color: $c-light;
-    color: $c-black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    z-index: 200;
+input {
+  font-size: 0.85rem;
+  color: $c-light;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: $c-border solid 0.5px;
+  outline: none;
+  padding: 0.6rem 0.7rem 0.8rem 0.7rem;
+  font-family: $ff-default;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s $anim;
+  font-weight: 400;
+  background-color: transparent;
+  &:focus-visible {
+    border-bottom: $c-white solid 0.5px;
+  }
+  &::placeholder {
+    color: $c-middle;
+  }
+}
 
-    .wrap-img {
-      position: relative;
+body {
+  &.loading {
+    display: none;
+    .loading-screen {
+      position: fixed;
       width: 100%;
-      height: 100%;
-      overflow: hidden;
-      transition: all 2.5s $anim;
-      img {
-        position: relative;
-        width: 100%;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      right: 0;
+      background-color: $c-light;
+      color: $c-black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 200;
+
+      .wrap-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
         height: 100%;
-        object-fit: cover;
+        overflow: hidden;
+        transition: all 0.1s $anim;
+        img {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
     }
   }
 
-  &.loaded .loading-screen {
-    .wrap-img {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border-radius: $b-radius;
-      height: calc(100vh - 7rem);
-      margin-top: 3rem;
-      margin-left: $p-layout;
-      margin-right: $p-layout;
+  &.loaded {
+    display: flex;
+    .loading-screen {
+      .wrap-img {
+        width: 100%;
+      }
     }
-  }
-  .loading-screen {
-    display: none;
+    .loading-screen {
+      display: none;
+    }
   }
 }
 

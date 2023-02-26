@@ -1,8 +1,7 @@
 section.welcome {
   height: 100vh;
   .container {
-    height: calc(100vh - 7rem);
-    margin-top: 5rem;
+    height: 100%;
     .caption {
       position: absolute;
       top: 50%;
@@ -13,34 +12,38 @@ section.welcome {
       z-index: 2;
       color: $c-light;
     }
-    .wrap-img {
+  }
+  .wrap-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    img {
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: $b-radius;
-      overflow: hidden;
-      img {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+      object-fit: cover;
     }
   }
 }
 
 section.about {
-  height: 100vh;
-  margin-bottom: 10vh;
+  height: 130vh;
   .container {
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .caption {
-      position: absolute;
-      top: 48%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative;
       width: 400px;
       text-align: center;
+      p {
+        justify-content: center;
+        align-items: center;
+      }
     }
     img {
       position: absolute;
@@ -78,13 +81,12 @@ section.about {
 }
 
 section.video-present {
-  height: 100vh;
+  height: 110vh;
   overflow: hidden;
-  border-radius: $b-radius $b-radius 0 0;
 }
 
 section.highlight {
-  padding: 200px 0 220px 0;
+  padding: 20vh 0;
   &::before {
     content: '';
     position: absolute;
@@ -97,26 +99,27 @@ section.highlight {
   }
   .container {
     max-width: 1100px;
-    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 }
 
 section.gallery {
-  align-items: center;
-  width: auto;
-  background-color: $c-bg;
-  z-index: 5;
+  padding: 20vh 0;
   .wrap-gallery {
     position: relative;
-    width: 3000px;
-    display: flex;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 2rem;
-    margin-left: -6vw;
-    overflow-x: scroll;
+    transform: rotate(-10deg);
     .item {
       position: relative;
-      height: 650px;
-      width: 1000px;
+      height: 100%;
+      width: 100%;
       border-radius: $b-radius-small;
       overflow: hidden;
       img {
@@ -130,7 +133,9 @@ section.gallery {
 }
 
 section.essentials {
-  padding: 20vh 0;
+  position: relative;
+  height: 100vh;
+  width: 100%;
   .container {
     height: 100%;
     display: flex;

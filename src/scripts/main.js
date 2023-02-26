@@ -9,13 +9,13 @@ const initScroll = () => {
   const scroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
-    lerp: 0.05,
+    lerp: 0.06,
     smoothMobile: true,
     resetNativeScroll: true,
   });
   scroll.on('call', (func, args, obj) => {
     [...obj.el.children].map((item) => {
-      item.children[0].style.transform = 'translate(0, 0)';
+      item.children[0].classList.toggle('transform-0');
     });
   });
 };
@@ -32,7 +32,7 @@ const removeLoader = () => {
         word.children[0].style.transform = 'translate(0, 0)';
       });
     });
-  }, 2500);
+  }, 100);
 };
 
 const replaceCaptions = () => {
@@ -81,9 +81,8 @@ const toggleMenu = () => {
   header.classList.toggle('with-menu');
 };
 
-const wrap = document.querySelector('[data-img-follow]');
-
 const followImg = (e) => {
+  const wrap = document.querySelector('[data-img-follow]');
   const viewportWidth = window.innerWidth;
 
   const mousePos = {
@@ -93,7 +92,7 @@ const followImg = (e) => {
   };
 
   wrap.style.transform = `
-  translate(${mousePos.X - 200}px, ${mousePos.Y - 200}px) 
+  translate(${mousePos.X - 200}px, ${mousePos.Y - 300}px) 
   rotate(${mousePos.hor() ? '-7deg' : '7deg'})
   `;
 };
