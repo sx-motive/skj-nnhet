@@ -20,6 +20,7 @@ const follow = (e, q) => {
     Y: e.clientY,
     hor: () => (e.clientX > window.innerWidth / 2 ? true : false),
   };
+  console.log(mousePos.X);
   q.style.transform = `
     translate(${mousePos.X - 200}px, ${mousePos.Y - 300}px) 
     rotate(${mousePos.hor() ? '-7deg' : '7deg'})
