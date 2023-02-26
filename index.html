@@ -11,6 +11,7 @@
       <a class="logo" href="/" data-caption data-intro>Skjønnhet</a>
       <span class="menu-btn" data-caption data-intro>menu</span>
     </header>
+
     <div class="content" data-scroll-container>
       <section class="welcome" data-scroll-section>
         <div class="container">
@@ -22,11 +23,21 @@
           </div>
         </div>
         <div class="wrap-img">
-          <img src="/welcome.webp" alt="skincare" />
+          <img
+            src="/welcome.webp"
+            alt="skincare"
+            data-scroll
+            data-img-welcome
+          />
         </div>
       </section>
 
-      <section class="about" data-scroll-section>
+      <section
+        class="about"
+        data-scroll-section
+        data-scroll
+        data-scroll-id="postwelcome"
+      >
         <div class="container">
           <div class="caption">
             <p
@@ -89,7 +100,7 @@
       </section>
 
       <section class="video-present" data-scroll-section>
-        <video autoplay controls muted data-scroll data-scroll-speed="-7">
+        <video autoplay muted data-scroll data-scroll-speed="-2">
           <source src="/video.mp4" type="video/mp4" />
         </video>
       </section>
@@ -133,7 +144,8 @@
           </div>
         </div>
       </section>
-      <section class="essentials" data-scroll-section>
+
+      <section class="essentials" data-scroll-section data-prefooter>
         <div class="container">
           <p
             data-scroll
@@ -198,7 +210,13 @@
           />
         </div>
       </section>
-      <footer class="footer" data-scroll-section>
+
+      <footer
+        class="footer"
+        data-scroll-section
+        data-scroll
+        data-scroll-id="footer"
+      >
         <div class="container">
           <div class="footer-box">
             <a
@@ -273,7 +291,7 @@
             <input type="text" placeholder="enter email" />
           </div>
           <div class="footer-box">
-            <p
+            <span
               data-caption
               data-scroll
               data-scroll-call="caption"
@@ -282,16 +300,16 @@
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries
-            </p>
+              ever since the 1500s.
+            </span>
           </div>
           <div class="footer-box">
-            <span class="rights">All rights reserved 2023</span>
-          </div>
-          <div class="footer-box">
-            <span class="author">Development by Denis Kunitsyn</span>
+            <iframe
+              src="https://iframe-motive.netlify.app"
+              width="300"
+              height="35"
+              style="border: none"
+            ></iframe>
           </div>
         </div>
       </footer>
@@ -302,12 +320,13 @@
         <img src="/welcome.webp" alt="skincare" />
       </div>
     </div>
+
     <div class="modal">
       <div class="menu" id="menu">
         <ul class="primary-nav">
-          <li><a data-caption href="/">Shop</a></li>
-          <li><a data-caption href="/">Lookbook</a></li>
-          <li><a data-caption href="/">About</a></li>
+          <li><a data-caption data-text="Shop" href="/">Shop</a></li>
+          <li><a data-caption data-text="Lookbook" href="/">Lookbook</a></li>
+          <li><a data-caption data-text="About" href="/">About</a></li>
         </ul>
         <div class="menu-footer">
           <ul class="secondary-nav">
@@ -321,6 +340,7 @@
         </div>
       </div>
     </div>
+
     <script type="module" src="./src/scripts/main.js"></script>
   </body>
 </html>
