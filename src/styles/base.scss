@@ -1,7 +1,6 @@
 $ff-title: 'TNR', sans-serif;
 $ff-default: 'Apercu', sans-serif;
 
-$fs-default: 16px;
 $fs-caption-1: 7rem;
 $fs-caption-2: 5.5rem;
 $fs-caption-3: 3.4rem;
@@ -39,7 +38,10 @@ $anim: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 html {
-  font-size: $fs-default;
+  font-size: 16px;
+  @include media('<=laptop') {
+    font-size: 14px;
+  }
 }
 
 body {
@@ -88,9 +90,15 @@ li {
 
 h1 {
   font-size: $fs-caption-1;
+  @include media('<=laptop') {
+    font-size: calc($fs-caption-1 * 0.8);
+  }
 }
 h2 {
   font-size: $fs-caption-2;
+  @include media('<=laptop') {
+    font-size: calc($fs-caption-2 * 0.8);
+  }
 }
 
 h1,
@@ -114,6 +122,9 @@ h6 {
   letter-spacing: -0.1rem;
   line-height: 0.9;
   margin: 1rem 0 2rem 0;
+  @include media('<=laptop') {
+    font-size: calc($fs-caption-3 * 0.8);
+  }
 }
 
 p {
@@ -131,6 +142,9 @@ p {
   &.with-menu {
     position: fixed;
     transform: skew(-5deg) scale(0.7) translate(10%, -25%);
+    @include media('<=laptop') {
+      transform: skew(-5deg) scale(0.7) translate(18%, -25%);
+    }
   }
 }
 

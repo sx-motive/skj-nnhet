@@ -48,8 +48,19 @@ footer {
     grid-template-columns: repeat(4, 1fr);
     font-size: 0.8rem;
     font-weight: 400;
+    @include media('<=laptop') {
+      max-width: 1100px;
+    }
+    @include media('<=phone') {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
     .footer-box {
       padding: 60px 0;
+      @include media('<=phone') {
+        padding: 20px 0;
+      }
       &:nth-child(5) {
         grid-column-start: 1;
         grid-column-end: 5;
@@ -97,6 +108,9 @@ footer {
       letter-spacing: -0.15rem;
 
       overflow: hidden;
+      @include media('<=laptop') {
+        font-size: calc($fs-caption-2 * 0.7);
+      }
       & span {
         transition: all 1500ms $anim;
       }

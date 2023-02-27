@@ -19,6 +19,12 @@ div.loader {
     z-index: 10000;
     color: $c-white;
     overflow: hidden;
+    @include media('<=laptop') {
+      font-size: 14rem;
+    }
+    @include media('<=phone') {
+      font-size: 6rem;
+    }
     .anim-wrap-persent {
       position: relative;
       display: block;

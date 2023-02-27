@@ -2,13 +2,14 @@ section.welcome {
   height: 100vh;
   .container {
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .caption {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 600px;
+      position: relative;
+      width: 100%;
+      max-width: 600px;
       text-align: center;
-      transform: translate(-50%, -50%);
       z-index: 2;
       color: $c-light;
     }
@@ -32,50 +33,81 @@ section.welcome {
 
 section.about {
   height: 130vh;
+  @include media('<=phone') {
+    height: auto;
+  }
   .container {
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    .caption {
-      position: relative;
-      width: 400px;
-      text-align: center;
-      p {
-        justify-content: center;
-        align-items: center;
-      }
+    gap: 3rem;
+    @include media('<=phone') {
+      gap: 1rem;
     }
-    img {
-      position: absolute;
-      border-radius: $b-radius-small;
-      object-fit: cover;
-      &.img-1 {
-        right: 0;
-        top: 20vh;
-        width: 30vw;
-        height: 350px;
-        z-index: 1;
+    .col {
+      position: relative;
+      width: 33.33%;
+      @include media('<=phone') {
+        width: 100%;
       }
-      &.img-2 {
-        right: 370px;
-        top: 40vh;
-        width: 15vw;
-        height: 390px;
-        z-index: 2;
+      .caption {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: center;
+        p {
+          justify-content: center;
+          align-items: center;
+        }
       }
-      &.img-3 {
-        left: 12vw;
-        top: 35vh;
-        width: 17vw;
-        height: 460px;
-        z-index: 2;
-      }
-      &.img-4 {
-        left: 5vw;
-        top: 60vh;
-        width: 30vw;
-        z-index: 1;
+      img {
+        position: absolute;
+        border-radius: $b-radius-small;
+        object-fit: cover;
+        @include media('<=phone') {
+          position: relative;
+        }
+
+        &.img-1 {
+          right: 0;
+          top: 100px;
+          width: 100%;
+          aspect-ratio: 1/ 0.65;
+          z-index: 1;
+        }
+        &.img-2 {
+          left: 30px;
+          top: -170px;
+          width: calc(70% - 30px);
+          aspect-ratio: 1/1.5;
+          z-index: 2;
+          @include media('<=phone') {
+            top: -50px;
+          }
+        }
+        &.img-3 {
+          left: 30px;
+          top: -150px;
+          width: calc(70% - 30px);
+          aspect-ratio: 1 / 1.5;
+          z-index: 2;
+          @include media('<=phone') {
+            top: 100px;
+            left: 100px;
+          }
+        }
+        &.img-4 {
+          left: 0;
+          top: -250px;
+          width: 100%;
+          aspect-ratio: 1/ 0.65;
+          z-index: 1;
+          @include media('<=phone') {
+            top: -50px;
+          }
+        }
       }
     }
   }
@@ -110,6 +142,9 @@ section.highlight {
   .container {
     max-width: 1100px;
     text-align: center;
+    @include media('<=laptop') {
+      max-width: 800px;
+    }
   }
 }
 
@@ -152,6 +187,9 @@ section.essentials {
     justify-content: center;
     flex-direction: column;
     gap: 3rem;
+    @include media('<=laptop') {
+      gap: 1rem;
+    }
     ul.essentials-list {
       position: relative;
       display: flex;
@@ -171,6 +209,10 @@ section.essentials {
         letter-spacing: -0.15rem;
 
         overflow: hidden;
+        @include media('<=laptop') {
+          font-size: calc($fs-caption-3);
+        }
+
         & span {
           transition: all 1500ms $anim;
         }
@@ -204,7 +246,9 @@ section.essentials {
     overflow: hidden;
     z-index: -1;
     transition: all 500ms $anim;
-
+    @include media('<=laptop') {
+      width: 300px;
+    }
     img {
       position: absolute;
       object-fit: cover;
