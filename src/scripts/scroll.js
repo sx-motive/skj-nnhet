@@ -10,9 +10,18 @@ export const initScroll = () => {
   });
 
   scroll.on('call', (func, args, obj) => {
-    [...obj.el.children].map((item) => {
-      item.children[0].classList.toggle('transform-0');
-    });
+    if (func == 'caption') {
+      [...obj.el.children].map((item) => {
+        item.children[0].classList.toggle('transform-0');
+      });
+    }
+
+    if (func == 'image') {
+      obj.el.classList.toggle('transform-rotate');
+    }
+    if (func == 'image-rev') {
+      obj.el.classList.toggle('transform-rotate-rev');
+    }
   });
 
   scroll.on('scroll', (args) => {

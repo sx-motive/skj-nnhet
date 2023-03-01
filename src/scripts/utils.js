@@ -4,6 +4,7 @@ const getRandomInt = (max) => {
 
 const replaceCaptions = () => {
   const captions = [...document.querySelectorAll('[data-caption]')];
+
   captions.forEach((caption) => {
     const tag = caption.tagName;
     const arrWords = caption.innerHTML.split(' ');

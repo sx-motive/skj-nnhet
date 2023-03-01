@@ -14,3 +14,13 @@ span.wrap-word {
 .transform-0 {
   transform: translate(0, 0) !important;
 }
+
+.transform-rotate {
+  transform-origin: bottom left;
+  transform: rotate(4deg);
+}
+
+.transform-rotate-rev {
+  transform-origin: bottom right;
+  transform: rotate(-4deg);
+}

@@ -1,4 +1,4 @@
-import loaderImg from '/welcome.webp';
+import loaderImg from '/photos/10.jpg';
 
 export const loader = {
   html: `
