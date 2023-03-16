@@ -236,67 +236,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 
   @return $result;
 }
-@function to-number($value) {
-  @if type-of($value) == 'number' {
-    @return $value;
-  } @else if type-of($value) != 'string' {
-    $_: im-log('Value for `to-number` should be a number or a string.');
-  }
 
-  $first-character: str-slice($value, 1, 1);
-  $result: 0;
-  $digits: 0;
-  $minus: ($first-character == '-');
-  $numbers: (
-    '0': 0,
-    '1': 1,
-    '2': 2,
-    '3': 3,
-    '4': 4,
-    '5': 5,
-    '6': 6,
-    '7': 7,
-    '8': 8,
-    '9': 9,
-  );
-  @if ($first-character == '+' or $first-character == '-') {
-    $value: str-slice($value, 2);
-  }
-
-  @for $i from 1 through str-length($value) {
-    $character: str-slice($value, $i, $i);
-
-    @if not(index(map-keys($numbers), $character) or $character == '.') {
-      @return to-length(if($minus, -$result, $result), str-slice($value, $i));
-    }
-
-    @if $character == '.' {
-      $digits: 1;
-    } @else if $digits == 0 {
-      $result: $result * 10 + map-get($numbers, $character);
-    } @else {
-      $digits: $digits * 10;
-      $result: $result + map-get($numbers, $character) / $digits;
-    }
-  }
-
-  @return if($minus, -$result, $result);
-}
-@mixin media-context($tweakpoints: (), $tweak-media-expressions: ()) {
-  $global-breakpoints: $breakpoints;
-  $global-media-expressions: $media-expressions;
-
-  $breakpoints: map-merge($breakpoints, $tweakpoints) !global;
-  $media-expressions: map-merge(
-    $media-expressions,
-    $tweak-media-expressions
-  ) !global;
-
-  @content;
-
-  $breakpoints: $global-breakpoints !global;
-  $media-expressions: $global-media-expressions !global;
-}
 @mixin media($conditions...) {
   @if ($im-media-support and length($conditions) == 0) or
     (not $im-media-support and im-intercepts-static-breakpoint($conditions...))
@@ -310,11 +250,3 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
     }
   }
 }
-
-$breakpoints: (
-  phone: 768px,
-  tablet: 1260px,
-  laptop: 1440px,
-  desktop: 1920px,
-  quad: 2560px,
-);

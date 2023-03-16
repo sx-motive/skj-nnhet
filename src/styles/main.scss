@@ -12,6 +12,14 @@
     format('woff');
 }
 
+$breakpoints: (
+  phone: 768px,
+  tablet: 1260px,
+  laptop: 1440px,
+  desktop: 1920px,
+  quad: 2560px,
+) !default;
+
 $ff-title: 'TimesNewRoman', sans-serif;
 $ff-default: 'Apercu', sans-serif;
 
@@ -255,28 +263,6 @@ button {
   &:hover {
     background-color: $c-black;
     color: $c-white;
-  }
-}
-
-input {
-  font-size: 0.85rem;
-  color: $c-light;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-bottom: $c-border solid 0.5px;
-  outline: none;
-  padding: 0.6rem 0.7rem 0.8rem 0.7rem;
-  font-family: $ff-default;
-  margin-bottom: 0.5rem;
-  transition: all 0.3s $anim;
-  font-weight: 400;
-  background-color: transparent;
-  &:focus-visible {
-    border-bottom: $c-white solid 0.5px;
-  }
-  &::placeholder {
-    color: $c-middle;
   }
 }
 
