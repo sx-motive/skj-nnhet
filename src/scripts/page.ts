@@ -432,16 +432,7 @@ data-scroll-id="footer"
       class="credits"
       data-scroll-repeat
     >
-      Data protection. In accordance with the General Data Protection
-      Regulation (EU) 2016/679 (hereinafter “GDPR“). The specific data
-      processing activities depend on how you interact with us. In
-      particular, the processing differs depending on whether you merely
-      visit our website (see point 3), accept the use of non-technical
-      cookies (see point 4), subscribe to our newsletter (see point 5),
-      are a customer or partner (see points 6 and 7), a supplier or
-      service provider (see point 8), or communicate with us via social
-      media channels (see point 9). The information on this is
-      specifically formulated.
+      Data protection. All media rights belong to third parties and are used on this site for educational purposes only. If you encounter copyright infringement, please report it to sx.motive@gmail.com. Media copyright https://www.teamdrjoseph.com/ https://www.teamdrjoseph.com/ VITALIS Dr. Joseph GmbH
     </p>
   </div>
   <div class="footer-box">

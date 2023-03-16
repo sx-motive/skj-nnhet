@@ -1,7 +1,7 @@
 import { loader } from './loader';
 import { footer, header, page, menu } from './page';
 import { initScroll } from './scroll';
-import AnimaView from 'anima-view';
+import AnimaView from './animaview';
 
 // main dom elements
 const contentDOM = document.getElementById('content') as HTMLElement;

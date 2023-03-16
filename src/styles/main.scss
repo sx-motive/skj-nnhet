@@ -133,7 +133,7 @@ body {
     #content {
       transform: skew(-5deg) scale(0.9) translate(10%, -5%);
       @include media('<=laptop') {
-        transform: skew(-5deg) scale(0.7) translate(18%, -25%);
+        transform: skew(-2deg) scale(1) translate(45%, 0);
       }
     }
   }
