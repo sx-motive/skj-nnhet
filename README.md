@@ -2,9 +2,7 @@ Hello and welcome. The "Skjønnhet" project is the homepage of the ecommerce of 
 
 <br>
 
-<video width="100%" controls autoplay mute>
-  <source src="https://github.com/sx-motive/skj-nnhet/blob/master/public/readme/welcome.mp4" type="video/mp4">
-</video>
+<img src="https://github.com/sx-motive/skj-nnet/blob/master/public/readme/animation.gif" alt="Skjønnhet by Denis Kunitsyn" border="0" />
 
 <br>
 
@@ -13,12 +11,12 @@ Hello and welcome. The "Skjønnhet" project is the homepage of the ecommerce of 
 This project is built on pure [typescript](https://www.typescriptlang.org/) with the [vite](https://vitejs.dev/) builder. Almost all animations were written from scratch, for smooth scrolling was taken [locomotive scroll](https://github.com/locomotivemtl/locomotive-scroll).
 
 <br>
-<video width="100%" controls autoplay mute>
-  <source src="https://github.com/sx-motive/skj-nnhet/blob/master/public/readme/animations.webm" type="video/webm">
-</video>
+
+<img src="https://github.com/sx-motive/skj-nnet/blob/master/public/readme/animation.gif" alt="Skjønnhet by Denis Kunitsyn" border="0" />
 
 <br>
-also I used my own "AnimaView" npm package for split text and animate it on scroll, you can explore more about on [the page](https://github.com/sx-motive/anima-view)
+
+also I used my own "AnimaView" npm package for split text and animate it on scroll, you can explore more about on [the AnimaView page](https://github.com/sx-motive/anima-view)
 
 <br>
 
