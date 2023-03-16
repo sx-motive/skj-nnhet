@@ -1,0 +1,343 @@
+@import './vendors.scss';
+
+@font-face {
+  font-family: 'Apercu';
+  src: url('https://cdn.jsdelivr.net/gh/sx-motive/cdn@master/fonts/apercu/ApercuPro-Regular.woff')
+    format('woff');
+}
+
+@font-face {
+  font-family: 'TimesNewRoman';
+  src: url('https://cdn.jsdelivr.net/gh/sx-motive/cdn@master/fonts/timesnewroman-cond/TimesNewRoman-Cond.woff')
+    format('woff');
+}
+
+$ff-title: 'TimesNewRoman', sans-serif;
+$ff-default: 'Apercu', sans-serif;
+
+$fs: 7rem;
+$fs-caption-1: $fs;
+$fs-caption-2: $fs * 0.8;
+$fs-caption-3: $fs * 0.5;
+$fs-menu: $fs;
+
+$c-white: rgb(255, 255, 255);
+$c-light: #ebebeb;
+$c-black: rgb(0, 0, 0);
+$c-dark: rgb(26, 26, 26);
+
+$c-bg: #f1ebe7;
+$c-theme: rgb(219, 190, 155);
+$c-middle: rgb(122, 122, 122);
+$c-border: rgb(231, 223, 214);
+
+$p-layout: 3rem;
+$b-radius: 2rem;
+$b-radius-small: 0.8rem;
+
+$anim: cubic-bezier(0.19, 1, 0.22, 1);
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+div.loader {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: $c-black;
+  color: $c-black;
+
+  z-index: 200;
+  .persent-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: $fs-caption-1;
+    z-index: 10000;
+    color: $c-white;
+    overflow: hidden;
+    .anim-wrap-persent {
+      position: relative;
+      display: block;
+      transition: transform 1.5s $anim;
+      &.transform-100 {
+        transform: translateY(-100%);
+      }
+    }
+  }
+  .wrap-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.5s $anim;
+    background-color: $c-middle;
+    img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::selection {
+  background: $c-black;
+  color: $c-white;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $ff-default;
+  font-size: 1rem;
+  line-height: 1;
+  color: $c-black;
+  background-color: $c-black;
+
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  user-select: none !important;
+
+  &.loading {
+    div.loader {
+      display: block;
+    }
+  }
+  div.loader {
+    display: none;
+  }
+  &.with-menu {
+    #content {
+      transform: skew(-5deg) scale(0.9) translate(10%, -5%);
+      @include media('<=laptop') {
+        transform: skew(-5deg) scale(0.7) translate(18%, -25%);
+      }
+    }
+  }
+}
+
+section {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  background-color: $c-bg;
+}
+
+a {
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+hr,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  font-family: $ff-title;
+  font-weight: 500;
+  letter-spacing: -0.2rem;
+  line-height: 0.75;
+  text-transform: capitalize;
+  margin: 1rem 0 2rem 0;
+}
+
+h1 {
+  font-size: $fs-caption-1;
+  @include media('<=phone') {
+    font-size: calc($fs-caption-1 * 0.8);
+  }
+}
+h2 {
+  font-size: $fs-caption-2;
+  @include media('<=phone') {
+    font-size: calc($fs-caption-2 * 0.8);
+  }
+}
+h3,
+h4,
+h5,
+h6 {
+  font-size: $fs-caption-3;
+  line-height: 1;
+  letter-spacing: -0.1rem;
+  font-weight: 500;
+  @include media('<=phone') {
+    font-size: calc($fs-caption-3 * 0.8);
+  }
+}
+
+p {
+  position: relative;
+  line-height: 1.2;
+  margin: 0.7rem 0;
+}
+
+.logo {
+  font-family: $ff-title;
+  text-transform: capitalize;
+  letter-spacing: -0.04rem;
+  font-weight: 500;
+  font-size: 2.2rem;
+}
+
+#content {
+  position: relative;
+  background-color: $c-black;
+  transition: all 2.5s $anim;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1920px;
+  padding-left: $p-layout;
+  padding-right: $p-layout;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  background-color: $c-border;
+  color: $c-black;
+  border: none;
+  font-size: 0.9rem;
+  font-family: $ff-default;
+  line-height: 0;
+  padding: 1.1rem 2rem 1.2rem 2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s $anim;
+  text-transform: capitalize;
+  &:hover {
+    background-color: $c-black;
+    color: $c-white;
+  }
+}
+
+input {
+  font-size: 0.85rem;
+  color: $c-light;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: $c-border solid 0.5px;
+  outline: none;
+  padding: 0.6rem 0.7rem 0.8rem 0.7rem;
+  font-family: $ff-default;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s $anim;
+  font-weight: 400;
+  background-color: transparent;
+  &:focus-visible {
+    border-bottom: $c-white solid 0.5px;
+  }
+  &::placeholder {
+    color: $c-middle;
+  }
+}
+
+.menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: $c-black;
+  color: $c-white;
+  height: 100%;
+  padding: $p-layout;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: -1;
+  ul.primary-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    li a {
+      font-size: $fs-menu;
+      position: relative;
+      display: block;
+      font-size: calc($fs-caption-2);
+      text-transform: capitalize;
+      letter-spacing: -0.15rem;
+
+      overflow: hidden;
+      @include media('<=laptop') {
+        font-size: calc($fs-caption-2 * 0.7);
+      }
+      & span {
+        transition: all 1500ms $anim;
+      }
+      &:hover span,
+      &:hover::after {
+        transform: translateY(-100%);
+      }
+      &::after {
+        content: attr(data-text);
+        position: absolute;
+        display: block;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        transition: all 1500ms $anim;
+        font-family: $ff-title;
+        font-size: calc($fs-caption-3 * 1.5);
+      }
+    }
+  }
+  .menu-footer {
+    position: absolute;
+    bottom: $p-layout;
+    left: $p-layout;
+    display: flex;
+    gap: 1rem;
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+@import './page.scss';
