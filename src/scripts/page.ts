@@ -221,7 +221,7 @@ data-scroll-id="postwelcome"
 </div>
 </section>
 
-<section class="essentials" data-scroll-section>
+<section class="essentials" data-scroll-section data-follow-wrap>
 <div class="container">
   <p
     data-scroll
@@ -287,7 +287,7 @@ data-scroll-id="postwelcome"
 </div>
 </section>
 
-<section class="news" data-scroll-section data-prefooter data-follow-wrap>
+<section class="news" data-scroll-section data-prefooter>
 <div class="container">
   <div class="news-wrap">
     <div class="news-col">
