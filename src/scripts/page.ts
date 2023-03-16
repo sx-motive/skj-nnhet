@@ -95,7 +95,7 @@ data-scroll-id="postwelcome"
 </section>
 
 <section class="video-present" data-scroll-section>
-<img src="/content/14.webp" data-scroll  />
+  <img src="/content/14.webp" />
 </section>
 
 <section class="highlight" data-scroll-section>
@@ -177,6 +177,7 @@ data-scroll-id="postwelcome"
   </div>
   <div class="col">
     <img
+    class="right-one"
       src="/content/4.webp"
       data-scroll
       data-image-left
@@ -187,7 +188,7 @@ data-scroll-id="postwelcome"
 <div class="container">
   <div class="col">
     <img
-    class="right-one"
+    
       src="/content/5.webp"
       data-scroll
       data-image-left

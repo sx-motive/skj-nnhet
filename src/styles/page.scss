@@ -56,10 +56,14 @@ section.welcome {
 }
 
 section.about {
-  height: auto;
-  min-height: 150vh;
+  padding-top: 300px;
+  padding-bottom: 600px;
   display: flex;
   align-items: center;
+  @include media('<=phone') {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
   .container {
     display: flex;
     align-items: center;
@@ -103,7 +107,7 @@ section.about {
           width: 100%;
           aspect-ratio: 1/ 0.65;
           z-index: 1;
-          rotate: -20deg;
+          rotate: -10deg;
           @include media('<=phone') {
             top: 0px;
             left: 0;
@@ -114,7 +118,7 @@ section.about {
         &.img-2 {
           left: 30px;
           top: -170px;
-          width: calc(70% - 30px);
+          width: calc(80% - 30px);
           aspect-ratio: 1/1.5;
           z-index: 2;
           @include media('<=phone') {
@@ -127,7 +131,7 @@ section.about {
         &.img-3 {
           right: 30px;
           top: -190px;
-          width: calc(70% - 30px);
+          width: calc(80% - 30px);
           aspect-ratio: 1 / 1.5;
           z-index: 2;
           @include media('<=phone') {
@@ -139,11 +143,11 @@ section.about {
         }
         &.img-4 {
           left: 30px;
-          top: -400px;
+          top: -300px;
           width: 100%;
           aspect-ratio: 1/ 0.65;
           z-index: 1;
-          rotate: -15deg;
+          rotate: 10deg;
           @include media('<=phone') {
             top: 0;
             left: 0;
@@ -158,24 +162,26 @@ section.about {
 }
 
 section.video-present {
-  height: 100vh;
-  overflow: hidden;
+  padding: 50px 0 0 0;
+  margin-top: -2px;
+  margin-bottom: -2px;
   img {
-    position: absolute;
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    background-position: bottom;
+    position: relative;
+    height: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+    aspect-ratio: 1/1;
     border-radius: $b-radius-small;
   }
 }
 
 section.highlight {
-  height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 300px;
 
   @include media('<=phone') {
-    height: auto;
     padding-top: 100px;
+    padding-bottom: 100px;
     h3 {
       font-size: 2rem;
     }
@@ -242,9 +248,7 @@ section.gallery {
 }
 
 section.essentials {
-  position: relative;
-  height: 100vh;
-  width: 100%;
+  padding: 200px 0;
   @include media('<=phone') {
     height: auto;
     padding: 100px 0;
@@ -337,13 +341,13 @@ section.essentials {
 }
 
 section.news {
-  height: 100vh;
+  height: 120vh;
   margin-left: auto;
   margin-right: auto;
   margin-top: -2px;
   border-radius: 0 0 $b-radius-small $b-radius-small;
   transition: width 0.7s $anim;
-  padding-top: 0;
+  padding-top: 200px;
   padding-bottom: 200px;
   overflow: hidden;
 
@@ -366,7 +370,7 @@ section.news {
       }
       .img-wrap {
         position: relative;
-        height: 60vh;
+        height: 70%;
         border-radius: $b-radius-small;
         overflow: hidden;
         @include media('<=phone') {

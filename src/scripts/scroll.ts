@@ -10,18 +10,6 @@ export const initScroll = () => {
     lerp: 0.06,
     resetNativeScroll: true,
   });
-  // @types/locomotive-scroll has only one parametr for options, this costs typecheck issue. FIX YOUR TYPES GUYS!
-  // @ts-ignore
-  // scroll.on('call', (call, enter, data) => {
-  //   if (call == 'image') {
-  //     console.log(data.progress);
-  //     // data.el.classList.toggle('transform-rotate');
-  //     data.el.transform = `rotate(${data.progress}deg)`;
-  //   }
-  //   if (call == 'image-rev') {
-  //     data.el.classList.toggle('transform-rotate-rev');
-  //   }
-  // });
 
   scroll.on('scroll', (args) => {
     let rounded = function (number: number) {

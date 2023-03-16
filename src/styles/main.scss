@@ -103,6 +103,9 @@ div.loader {
 
 html {
   font-size: 16px;
+  @include media('<=laptop') {
+    font-size: 14px;
+  }
 }
 
 body {
