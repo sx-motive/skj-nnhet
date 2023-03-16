@@ -2,7 +2,7 @@ Hello and welcome. The "Skjønnhet" project is the homepage of the ecommerce of 
 
 <br>
 
-<img src="https://github.com/sx-motive/skj-nnet/blob/master/public/readme/animation.gif" alt="Skjønnhet by Denis Kunitsyn" border="0" />
+<img src="https://github.com/sx-motive/skj-nnhet/blob/master/public/readme/welcome.gif" alt="Skjønnhet by Denis Kunitsyn" border="0" />
 
 <br>
 
@@ -12,7 +12,7 @@ This project is built on pure [typescript](https://www.typescriptlang.org/) with
 
 <br>
 
-<img src="https://github.com/sx-motive/skj-nnet/blob/master/public/readme/animation.gif" alt="Skjønnhet by Denis Kunitsyn" border="0" />
+<img src="https://github.com/sx-motive/skj-nnhet/blob/master/public/readme/animations.gif" alt="Skjønnhet by Denis Kunitsyn" border="0" />
 
 <br>
 
