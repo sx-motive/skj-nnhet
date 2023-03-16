@@ -15,7 +15,7 @@
     "vite": "^4.1.0"
   },
   "dependencies": {
-    "anima-view": "^1.1.4",
+    "anima-view": "^1.1.5",
     "include-media": "^2.0.0",
     "locomotive-scroll": "^4.1.4",
     "sass": "^1.59.3"
