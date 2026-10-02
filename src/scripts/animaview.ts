@@ -1,101 +1,61 @@
-type Els =
-  | NodeListOf<Element>
-  | NodeListOf<HTMLElement>
-  | HTMLCollectionOf<Element>
-  | HTMLElement
-  | Element
-  | null;
+type Targets = NodeListOf<Element> | HTMLCollectionOf<Element> | Element | null;
+
+type AnimType = 'random' | 'bottom' | 'top' | 'left' | 'right';
+
+const WORD_PATTERN = /(?<!(<\/?[^>]*|&[^;]*))([^\s<]+)/g;
+const WORD_TEMPLATE = `$1<span class="word"><span>$2</span></span>`;
+
+const RANDOM_TRANSFORMS = [
+  'translate(0, -110%)',
+  'translate(0, 110%)',
+  'translate(110%, 0)',
+  'translate(-110%, 0)',
+];
+
+const TRANSFORMS: Record<Exclude<AnimType, 'random'>, string> = {
+  bottom: 'translate(0, 120%) skewY(10deg)',
+  top: 'translate(0, -120%) skewY(-10deg)',
+  left: 'translate(-110%, 0) skewX(10deg)',
+  right: 'translate(110%, 0) skewX(-10deg)',
+};
 
 export default class AnimaView {
-  els: Els;
-  animType?: string;
+  private readonly targets: Element[];
+  private readonly animType: AnimType;
 
-  constructor(els: Els, animType?: string) {
-    this.els = els;
+  constructor(targets: Targets, animType: AnimType = 'bottom') {
+    if (targets === null) {
+      this.targets = [];
+    } else if (targets instanceof Element) {
+      this.targets = [targets];
+    } else {
+      this.targets = [...targets];
+    }
     this.animType = animType;
   }
 
-  getRandomInt = (max: number) => {
-    return Math.floor(Math.random() * max).toString();
-  };
-
-  getRandomPattern = () => {
-    let num: string = '';
-    switch (this.getRandomInt(4)) {
-      case '0':
-        num = '0 ,-110%';
-        break;
-      case '1':
-        num = '0, 110%';
-        break;
-      case '2':
-        num = '110%, 0';
-        break;
-      case '3':
-        num = '-110%, 0';
+  private getTransform() {
+    if (this.animType === 'random') {
+      return RANDOM_TRANSFORMS[
+        Math.floor(Math.random() * RANDOM_TRANSFORMS.length)
+      ];
     }
-    return `translate(${num})`;
-  };
+    return TRANSFORMS[this.animType];
+  }
 
-  getTransformType = (span: HTMLElement) => {
-    switch (this.animType) {
-      case 'random':
-        span.style.transform = this.getRandomPattern();
-        break;
-      case 'bottom':
-        span.style.transform = `translate(0, 120%) skewY(10deg)`;
-        break;
-      case 'top':
-        span.style.transform = `translate(0, -120%) skewY(-10deg)`;
-        break;
-      case 'left':
-        span.style.transform = `translate(-110%, 0) skewX(10deg)`;
-        break;
-      case 'right':
-        span.style.transform = `translate(110%, 0) skewX(-10deg)`;
-        break;
-      default:
-        span.style.transform = `translate(0, 120%) skewY(10deg)`;
-    }
-  };
-
-  getObserver = () =>
-    new IntersectionObserver((entries) => {
-      entries.forEach((el) => {
-        const intersecting = el.isIntersecting;
-        intersecting
-          ? el.target.classList.add('show')
-          : el.target.classList.remove('show');
+  init() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('show', entry.isIntersecting);
       });
     });
 
-  init = () => {
-    const pattern: RegExp = /(?<!(<\/?[^>]*|&[^;]*))([^\s<]+)/g;
-    const defaultPattern: string = `$1<span class="word"><span>$2</span></span>`;
-
-    let observer = this.getObserver();
-
-    if (this.els === null) {
-      console.log('No elements passed');
-      return;
-    }
-
-    if (this.els instanceof NodeList || this.els instanceof HTMLCollection) {
-      Array.prototype.map.call(this.els, (el) => {
-        el.innerHTML = el.innerHTML.replace(pattern, defaultPattern);
-        [...el.children].map((e) => {
-          this.getTransformType(e.lastChild as HTMLElement);
-          observer.observe(e);
-        });
-      });
-    }
-
-    if (this.els instanceof HTMLElement || this.els instanceof Element) {
-      this.els.innerHTML = this.els.innerHTML.replace(pattern, defaultPattern);
-      Array.from(this.els.children).map((e) => {
-        this.getTransformType(e.lastChild as HTMLElement);
-        observer.observe(e);
-      });
-    }
-  };
+    this.targets.forEach((target) => {
+      target.innerHTML = target.innerHTML.replace(WORD_PATTERN, WORD_TEMPLATE);
+      for (const word of target.children) {
+        (word.lastChild as HTMLElement).style.transform = this.getTransform();
+        observer.observe(word);
+      }
+    });
+  }
 }

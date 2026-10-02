@@ -1,63 +1,47 @@
-import loaderImg from '/content/10.webp';
+const INTRO_DELAY_MS = 1500;
 
-interface Loader {
-  html: string;
-  counter: () => void;
-  removeLoader: () => void;
-}
-
-export const loader: Loader = {
+export const loader = {
   html: `
   <div class="loader">
-    <div class="persent-wrap">
-      <span class="anim-wrap-persent"> 
-        <span id="persent">0</span>%
+    <div class="percent-wrap">
+      <span class="anim-wrap-percent">
+        <span id="percent">0</span>%
       </span>
     </div>
     <div class="wrap-img">
-      <img src="${loaderImg}" alt="skincare" />
+      <img src="/content/10.webp" alt="skincare" />
     </div>
   </div>
   `,
   counter: () => {
-    const images = document.querySelectorAll(
-      'img'
-    ) as NodeListOf<HTMLImageElement>;
-    const domPersent = document.getElementById('persent') as HTMLElement;
-    const step = 100 / images.length;
-    let counter: number = 0;
+    const images = document.querySelectorAll('img');
+    const percentDOM = document.getElementById('percent') as HTMLElement;
+    let loaded = 0;
 
-    const loaded = () => {
-      counter += step;
-      domPersent.innerHTML = Math.round(counter).toString();
+    const onImageDone = () => {
+      loaded += 1;
+      percentDOM.textContent = Math.round(
+        (loaded / images.length) * 100
+      ).toString();
     };
 
-    Array.from(images).map((img: HTMLImageElement) => {
+    images.forEach((img) => {
       if (img.complete) {
-        loaded();
-      } else {
-        img.addEventListener('load', loaded);
-        img.addEventListener('error', function () {
-          alert('error');
-        });
+        onImageDone();
+        return;
       }
+      img.addEventListener('load', onImageDone, { once: true });
+      img.addEventListener('error', onImageDone, { once: true });
     });
   },
   removeLoader: () => {
-    document
-      .getElementsByClassName('anim-wrap-persent')[0]
-      .classList.add('transform-100');
+    document.querySelector('.anim-wrap-percent')?.classList.add('transform-100');
 
     setTimeout(() => {
-      const body = document.querySelector('body') as HTMLBodyElement;
-      body.classList.remove('loading');
-
-      const intro = document.querySelectorAll('[data-intro-element]');
-      Array.from(intro).map((item) => {
-        Array.from(item.children).map((word) => {
-          word.classList.toggle('show');
-        });
-      });
-    }, 1500);
+      document.body.classList.remove('loading');
+      document
+        .querySelectorAll('[data-intro-element] > .word')
+        .forEach((word) => word.classList.add('show'));
+    }, INTRO_DELAY_MS);
   },
 };

@@ -60,7 +60,7 @@ section.about {
   padding-bottom: 600px;
   display: flex;
   align-items: center;
-  @include media('<=phone') {
+  @include media(phone) {
     padding-top: 100px;
     padding-bottom: 100px;
   }
@@ -70,14 +70,14 @@ section.about {
     gap: 3rem;
     margin-top: 70px;
     margin-bottom: 70px;
-    @include media('<=phone') {
+    @include media(phone) {
       gap: 4rem;
       flex-wrap: wrap;
     }
     .col {
       position: relative;
       width: 33.33%;
-      @include media('<=phone') {
+      @include media(phone) {
         width: 100%;
         display: flex;
         align-items: center;
@@ -97,7 +97,7 @@ section.about {
         position: absolute;
         border-radius: $b-radius-small;
         object-fit: cover;
-        @include media('<=phone') {
+        @include media(phone) {
           position: relative;
         }
 
@@ -108,7 +108,7 @@ section.about {
           aspect-ratio: 1/ 0.65;
           z-index: 1;
           rotate: -10deg;
-          @include media('<=phone') {
+          @include media(phone) {
             top: 0px;
             left: 0;
             width: 50%;
@@ -121,7 +121,7 @@ section.about {
           width: calc(80% - 30px);
           aspect-ratio: 1/1.5;
           z-index: 2;
-          @include media('<=phone') {
+          @include media(phone) {
             top: 0px;
             left: 0;
             width: 50%;
@@ -134,7 +134,7 @@ section.about {
           width: calc(80% - 30px);
           aspect-ratio: 1 / 1.5;
           z-index: 2;
-          @include media('<=phone') {
+          @include media(phone) {
             top: 0;
             left: 0;
             width: 50%;
@@ -148,7 +148,7 @@ section.about {
           aspect-ratio: 1/ 0.65;
           z-index: 1;
           rotate: 10deg;
-          @include media('<=phone') {
+          @include media(phone) {
             top: 0;
             left: 0;
             width: 50%;
@@ -179,7 +179,7 @@ section.highlight {
   padding-top: 100px;
   padding-bottom: 300px;
 
-  @include media('<=phone') {
+  @include media(phone) {
     padding-top: 100px;
     padding-bottom: 100px;
     h3 {
@@ -193,7 +193,7 @@ section.highlight {
     align-items: center;
     justify-content: center;
 
-    @include media('<=laptop') {
+    @include media(laptop) {
       max-width: 900px;
     }
   }
@@ -216,23 +216,13 @@ section.gallery {
       justify-content: center;
       padding: 4rem;
       text-align: center;
-      @include media('<=phone') {
+      @include media(phone) {
         width: 100%;
         padding: 4rem 0;
       }
 
       .text-wrap {
         max-width: 540px;
-      }
-
-      .transform-rotate {
-        transform-origin: bottom left;
-        transform: rotate(4deg);
-      }
-
-      .transform-rotate-rev {
-        transform-origin: bottom right;
-        transform: rotate(-4deg);
       }
 
       img {
@@ -249,7 +239,7 @@ section.gallery {
 
 section.essentials {
   padding: 200px 0;
-  @include media('<=phone') {
+  @include media(phone) {
     height: auto;
     padding: 100px 0;
   }
@@ -260,7 +250,7 @@ section.essentials {
     justify-content: center;
     flex-direction: column;
     gap: 3rem;
-    @include media('<=laptop') {
+    @include media(laptop) {
       gap: 1rem;
     }
     ul.essentials-list {
@@ -282,7 +272,7 @@ section.essentials {
         letter-spacing: -0.15rem;
 
         overflow: hidden;
-        @include media('<=laptop') {
+        @include media(laptop) {
           font-size: calc($fs-caption-3);
         }
 
@@ -311,15 +301,18 @@ section.essentials {
   }
   .image-wrap {
     position: absolute;
+    top: 0;
+    left: 0;
     transform: translate(-50%, -50%);
     width: 400px;
     aspect-ratio: 3 / 3.5;
     border-radius: $b-radius;
     overflow: hidden;
     z-index: -1;
-
-    transition: transform 0.3s ease-in-out;
-    @include media('<=laptop') {
+    pointer-events: none;
+    will-change: transform;
+    transition: transform 0.3s ease-out;
+    @include media(laptop) {
       width: 300px;
     }
     img {
@@ -356,16 +349,13 @@ section.news {
     overflow-x: scroll;
     display: flex;
     gap: 3rem;
-    .container {
-      overflow-y: scroll;
-    }
     .news-col {
       position: relative;
       width: 27vw;
-      @include media('<=tablet') {
+      @include media(tablet) {
         width: 40vw;
       }
-      @include media('<=phone') {
+      @include media(phone) {
         width: 50vw;
       }
       .img-wrap {
@@ -373,7 +363,7 @@ section.news {
         height: 70%;
         border-radius: $b-radius-small;
         overflow: hidden;
-        @include media('<=phone') {
+        @include media(phone) {
           height: 40vh;
         }
         img {
@@ -413,17 +403,17 @@ footer {
     grid-template-columns: repeat(4, 1fr);
     font-size: 0.8rem;
     font-weight: 400;
-    @include media('<=laptop') {
+    @include media(laptop) {
       max-width: 1100px;
     }
-    @include media('<=phone') {
+    @include media(phone) {
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
     }
     .footer-box {
       padding: 60px 0;
-      @include media('<=phone') {
+      @include media(phone) {
         padding: 20px 0;
       }
       &:nth-child(5) {

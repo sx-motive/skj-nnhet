@@ -3,102 +3,65 @@ import { footer, header, page, menu } from './page';
 import { initScroll } from './scroll';
 import AnimaView from './animaview';
 
-// main dom elements
 const contentDOM = document.getElementById('content') as HTMLElement;
-const bodyDOM = document.querySelector('body') as HTMLBodyElement;
+const bodyDOM = document.body;
 
-// render
-contentDOM.innerHTML += page + footer;
-bodyDOM.innerHTML += loader.html + menu + header;
+contentDOM.insertAdjacentHTML('beforeend', page + footer);
+bodyDOM.insertAdjacentHTML('beforeend', loader.html + menu + header);
 loader.counter();
 
-// rendered dom elements
 const menuBtnDOM = document.getElementById('menu-btn') as HTMLElement;
 const menuDOM = document.getElementById('menu') as HTMLElement;
-const titlesDOM = document.querySelectorAll('[data-title]');
-const textDOM = document.querySelectorAll('[data-text]');
-const wrapFollowDOM = document.querySelector(
+const followWrapDOM = document.querySelector(
   '[data-follow-wrap]'
 ) as HTMLElement;
-const elementFollowDOM = document.querySelector(
-  '[data-follow-img]'
-) as HTMLElement;
-const linksDOM = document.querySelectorAll(
-  '[data-link]'
-) as NodeListOf<HTMLElement>;
-const imagesDOM = document.querySelectorAll(
-  '[data-img]'
-) as NodeListOf<HTMLElement>;
+const followImgDOM = document.querySelector('[data-follow-img]') as HTMLElement;
+const linksDOM = document.querySelectorAll<HTMLElement>('[data-link]');
+const imagesDOM = document.querySelectorAll<HTMLElement>('[data-img]');
 
-// event listener and function for mobile menu
 const toggleMenu = () => {
   bodyDOM.classList.toggle('with-menu');
-  const arrWords = Array.from(
-    menuDOM.getElementsByClassName('word') as HTMLCollectionOf<HTMLElement>
-  );
-  arrWords.map((word) => {
+  for (const word of menuDOM.getElementsByClassName('word')) {
     word.classList.toggle('show');
-  });
+  }
 };
-menuBtnDOM.onclick = () => toggleMenu();
+menuBtnDOM.addEventListener('click', toggleMenu);
 
-// init split captions with Anima
-const animaTitles = new AnimaView(titlesDOM, 'random');
-const animaText = new AnimaView(textDOM);
+new AnimaView(document.querySelectorAll('[data-title]'), 'random').init();
+new AnimaView(document.querySelectorAll('[data-text]')).init();
 
-animaTitles.init();
-animaText.init();
-
-// replace initial animations
-const replaeAnimation = () => {
-  const arrWords = [...document.querySelectorAll('[data-intro]')].map((i) => i);
-  arrWords.map((word) => {
-    [...word.children].map((i) => i.classList.remove('show'));
+const resetIntroAnimation = () => {
+  document.querySelectorAll('[data-intro] > .word').forEach((word) => {
+    word.classList.remove('show');
   });
 };
 
-// follow mouse animation
-
-const follow = (e: MouseEvent) => {
-  const mousePos = {
-    x: e.clientX,
-    y: e.clientY,
-    hor: () => (e.clientX > window.innerWidth / 2 ? true : false),
-  };
-
-  console.log('oi?');
-
-  elementFollowDOM.style.left = `${mousePos.x - 200}px`;
-  elementFollowDOM.style.top = `${mousePos.y - 200}px`;
-  elementFollowDOM.style.transform = `rotate(${
-    mousePos.hor() ? '7deg' : '-7deg'
-  })`;
+const followMouse = (e: MouseEvent) => {
+  const rect = followWrapDOM.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const tilt = e.clientX > window.innerWidth / 2 ? 7 : -7;
+  followImgDOM.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) rotate(${tilt}deg)`;
 };
 
-const setLinks = (
-  links: NodeListOf<HTMLElement>,
-  images: NodeListOf<HTMLElement>
-) => {
-  [...links].map((link) => {
-    const num = link.dataset.link;
+const bindProductLinks = () => {
+  linksDOM.forEach((link) => {
+    const images = [...imagesDOM].filter(
+      (image) => image.dataset.img === link.dataset.link
+    );
     link.addEventListener('mouseenter', () => {
-      [...images].forEach((image) => {
-        image.dataset.img == num ? image.classList.add('active') : '';
-      });
+      images.forEach((image) => image.classList.add('active'));
     });
     link.addEventListener('mouseleave', () => {
-      [...images].forEach((image) => {
-        image.dataset.img == num ? image.classList.remove('active') : '';
-      });
+      images.forEach((image) => image.classList.remove('active'));
     });
   });
 };
 
-// onload functions
-window.onload = () => {
+window.addEventListener('load', () => {
   initScroll();
-  replaeAnimation();
+  resetIntroAnimation();
   loader.removeLoader();
-  setLinks(linksDOM, imagesDOM);
-  wrapFollowDOM.onmousemove = (e) => follow(e);
-};
+  bindProductLinks();
+  followWrapDOM.addEventListener('mousemove', followMouse);
+});

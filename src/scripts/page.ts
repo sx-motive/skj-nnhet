@@ -1,6 +1,3 @@
-import instagram from '/icons/logo-instagram.svg';
-import facebook from '/icons/logo-facebook.svg';
-
 const page = `
 <section class="welcome" data-scroll-section>
 <div class="container">
@@ -48,7 +45,6 @@ data-scroll-id="postwelcome"
     <div class="caption">
       <p
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
       >
@@ -56,7 +52,6 @@ data-scroll-id="postwelcome"
       </p>
       <h2
         data-scroll
-        data-scroll-call="caption"
         data-title
         data-scroll-repeat
       >
@@ -64,7 +59,6 @@ data-scroll-id="postwelcome"
       </h2>
       <p
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
       >
@@ -95,14 +89,13 @@ data-scroll-id="postwelcome"
 </section>
 
 <section class="video-present" data-scroll-section>
-  <img src="/content/14.webp" />
+  <img src="/content/14.webp" alt="skincare" />
 </section>
 
 <section class="highlight" data-scroll-section>
 <div class="container">
   <h3
     data-scroll
-    data-scroll-call="caption"
     data-title
     data-scroll-repeat
   >
@@ -115,11 +108,12 @@ data-scroll-id="postwelcome"
 </div>
 </section>
 
-<section class="gallery" data-scroll-section >
+<section class="gallery" data-scroll-section>
 <div class="container" data-scroll data-scroll-id="gallery">
   <div class="col">
     <img
       src="/content/3.webp"
+      alt="skincare"
       data-scroll
       data-image-left
       data-scroll-repeat
@@ -129,7 +123,6 @@ data-scroll-id="postwelcome"
     <div class="text-wrap">
       <h4
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
       >
@@ -137,7 +130,6 @@ data-scroll-id="postwelcome"
       </h4>
       <p
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
       >
@@ -155,7 +147,6 @@ data-scroll-id="postwelcome"
     <div class="text-wrap">
       <h4
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
       >
@@ -163,7 +154,6 @@ data-scroll-id="postwelcome"
       </h4>
       <p
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
       >
@@ -177,8 +167,9 @@ data-scroll-id="postwelcome"
   </div>
   <div class="col">
     <img
-    class="right-one"
+      class="right-one"
       src="/content/4.webp"
+      alt="skincare"
       data-scroll
       data-image-left
       data-scroll-repeat
@@ -188,8 +179,8 @@ data-scroll-id="postwelcome"
 <div class="container">
   <div class="col">
     <img
-    
       src="/content/5.webp"
+      alt="skincare"
       data-scroll
       data-image-left
       data-scroll-repeat
@@ -199,7 +190,6 @@ data-scroll-id="postwelcome"
     <div class="text-wrap">
       <h4
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
       >
@@ -207,7 +197,6 @@ data-scroll-id="postwelcome"
       </h4>
       <p
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
       >
@@ -226,7 +215,6 @@ data-scroll-id="postwelcome"
 <div class="container">
   <p
     data-scroll
-    data-scroll-call="caption"
     data-text
     data-scroll-repeat
   >
@@ -237,7 +225,6 @@ data-scroll-id="postwelcome"
       <a
         href="/shop"
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
         data-caption="Facial Moisturizer"
@@ -248,7 +235,6 @@ data-scroll-id="postwelcome"
       <a
         href="/shop"
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
         data-caption="Hydrating Mask"
@@ -259,7 +245,6 @@ data-scroll-id="postwelcome"
       <a
         href="/shop"
         data-scroll
-        data-scroll-call="caption"
         data-text
         data-scroll-repeat
         data-caption="Exfoliant Paste"
@@ -359,7 +344,6 @@ data-scroll-id="footer"
       data-text
       data-scroll
       data-scroll-repeat
-      data-scroll-call="caption"
       >Skjønnhet</a
     >
   </div>
@@ -369,7 +353,6 @@ data-scroll-id="footer"
         <a
           data-text
           data-scroll
-          data-scroll-call="caption"
           data-scroll-repeat
           href="/"
           >Shop</a
@@ -379,7 +362,6 @@ data-scroll-id="footer"
         <a
           data-text
           data-scroll
-          data-scroll-call="caption"
           data-scroll-repeat
           href="/"
           >Lookbook</a
@@ -389,7 +371,6 @@ data-scroll-id="footer"
         <a
           data-text
           data-scroll
-          data-scroll-call="caption"
           data-scroll-repeat
           href="/"
           >About</a
@@ -399,14 +380,13 @@ data-scroll-id="footer"
         <a
           data-text
           data-scroll
-          data-scroll-call="caption"
           data-scroll-repeat
           href="/"
           >Legal</a
         >
       </li>
       <li>
-        <a data-text data-scroll data-scroll-call="caption" href="/"
+        <a data-text data-scroll href="/"
           >Contact</a
         >
       </li>
@@ -416,7 +396,6 @@ data-scroll-id="footer"
     <p
       data-text
       data-scroll
-      data-scroll-call="caption"
       data-scroll-repeat
       class="subscribe"
     >
@@ -428,7 +407,6 @@ data-scroll-id="footer"
     <p
       data-text
       data-scroll
-      data-scroll-call="caption"
       class="credits"
       data-scroll-repeat
     >
@@ -455,8 +433,8 @@ const menu = `
         <li><a data-intro data-caption data-text="About" href="/">About</a></li>
       </ul> 
       <div class="menu-footer">
-        <img src="${instagram}" alt="instagram" />
-        <img src="${facebook}" alt="facebook" />
+        <img src="/icons/logo-instagram.svg" alt="instagram" />
+        <img src="/icons/logo-facebook.svg" alt="facebook" />
       </div>
     </nav>
 `;

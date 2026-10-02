@@ -1,52 +1,44 @@
-import LS from 'locomotive-scroll';
+import LocomotiveScroll from 'locomotive-scroll';
+
+const round2 = (value: number) => Math.round(value * 100) / 100;
 
 export const initScroll = () => {
-  const contentDOM = document.querySelector(
+  const container = document.querySelector(
     '[data-scroll-container]'
   ) as HTMLElement;
-  const scroll = new LS({
-    el: contentDOM,
+  const galleryImages = document.querySelectorAll<HTMLElement>(
+    '[data-image-left]'
+  );
+  const preFooter = document.querySelector('[data-prefooter]') as HTMLElement;
+  const welcomeImg = document.querySelector(
+    '[data-img-welcome]'
+  ) as HTMLElement;
+
+  const scroll = new LocomotiveScroll({
+    el: container,
     smooth: true,
     lerp: 0.06,
     resetNativeScroll: true,
   });
 
-  scroll.on('scroll', (args) => {
-    let rounded = function (number: number) {
-      return +number.toFixed(2);
-    };
-
-    if (typeof args.currentElements['gallery'] === 'object') {
-      let progress = args.currentElements['gallery'].progress;
-      const arrOfImages = [
-        ...(document.querySelectorAll(
-          '[data-image-left]'
-        ) as NodeListOf<HTMLElement>),
-      ];
-      arrOfImages.map((image) => {
-        if (image.classList.contains('right-one')) {
-          image.style.transform = `rotate(-${progress * 5}deg)`;
-        } else {
-          image.style.transform = `rotate(${progress * 5}deg)`;
-        }
+  scroll.on('scroll', ({ currentElements }) => {
+    const gallery = currentElements['gallery'];
+    if (gallery) {
+      const angle = gallery.progress * 5;
+      galleryImages.forEach((image) => {
+        const sign = image.classList.contains('right-one') ? -1 : 1;
+        image.style.transform = `rotate(${sign * angle}deg)`;
       });
     }
 
-    if (typeof args.currentElements['footer'] === 'object') {
-      let progress = args.currentElements['footer'].progress;
-      const preFooter = document.querySelector(
-        '[data-prefooter]'
-      ) as HTMLElement;
-      preFooter.style.width = `${100 - rounded(progress) * 20}%`;
+    const footer = currentElements['footer'];
+    if (footer) {
+      preFooter.style.width = `${100 - round2(footer.progress) * 20}%`;
     }
-    if (typeof args.currentElements['postwelcome'] === 'object') {
-      let progress = args.currentElements['postwelcome'].progress;
 
-      const welcomeImg = document.querySelector(
-        '[data-img-welcome]'
-      ) as HTMLElement;
-
-      welcomeImg.style.transform = `scale(${1 + rounded(progress)})`;
+    const postWelcome = currentElements['postwelcome'];
+    if (postWelcome) {
+      welcomeImg.style.transform = `scale(${1 + round2(postWelcome.progress)})`;
     }
   });
 };
