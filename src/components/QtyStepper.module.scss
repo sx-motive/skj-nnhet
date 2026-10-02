@@ -1,0 +1,28 @@
+@use '../styles/tokens' as *;
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50px;
+  height: 3rem;
+
+  span {
+    min-width: 2rem;
+    text-align: center;
+  }
+
+  button {
+    width: 3rem;
+    height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+}

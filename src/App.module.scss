@@ -1,0 +1,23 @@
+@use './styles/tokens' as *;
+
+.content {
+  position: relative;
+  z-index: 1;
+  background-color: $c-black;
+  transition: transform 2.5s $anim;
+}
+
+.withMenu {
+  transform: skew(-5deg) scale(0.9) translate(32vw, -5vh);
+  cursor: pointer;
+
+  @include media(laptop) {
+    transform: skew(-2deg) translate(45vw, 0);
+  }
+}
+
+.main {
+  --p: var(--footer-progress, 0);
+  position: relative;
+  clip-path: inset(0 calc(var(--p) * 10%) 0 calc(var(--p) * 10%) round 0 0 $b-radius-small $b-radius-small);
+}

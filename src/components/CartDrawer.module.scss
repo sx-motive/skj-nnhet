@@ -1,0 +1,166 @@
+@use '../styles/tokens' as *;
+
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba($c-black, 0.4);
+  opacity: 0;
+  transition: opacity 0.6s $anim;
+}
+
+.panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(480px, 100%);
+  display: flex;
+  flex-direction: column;
+  background: $c-bg;
+  padding: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.9s $anim;
+
+  @include media(phone) {
+    padding: 1.25rem;
+  }
+}
+
+.open {
+  pointer-events: auto;
+
+  .overlay {
+    opacity: 1;
+  }
+
+  .panel {
+    transform: none;
+  }
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.title {
+  font-size: $fs-caption-3 * 0.9;
+  margin: 0 0 1.5rem;
+}
+
+.close,
+.remove {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.remove {
+  font-size: 0.8rem;
+  color: $c-middle;
+  align-self: flex-start;
+}
+
+.empty {
+  margin: auto 0;
+  text-align: center;
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.shipping {
+  font-size: 0.85rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid $c-border;
+}
+
+.bar {
+  height: 3px;
+  background: $c-border;
+  border-radius: 3px;
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    background: $c-black;
+    transition: width 0.6s $anim;
+  }
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  margin: 0 -0.5rem;
+  padding: 0 0.5rem;
+}
+
+.item {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid $c-border;
+}
+
+.thumb {
+  flex: 0 0 96px;
+  aspect-ratio: 3 / 3.5;
+  border-radius: $b-radius-small;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+  }
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.name {
+  font-family: $ff-title;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.meta {
+  font-size: 0.8rem;
+  color: $c-middle;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.3rem;
+}
+
+.footer {
+  padding-top: 1.25rem;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+}

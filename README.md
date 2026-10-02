@@ -1,16 +1,32 @@
-Hello and welcome. The "Skjønnhet" project is the homepage of the ecommerce of the body cream theme with an emphasis on animation and design.
+Skjønnhet is a demo storefront for a Nordic skincare brand, with an emphasis on animation and design. It started as a single landing page and is now a small shop with mock data: catalog, product pages, a bag, checkout and a journal.
 
 <img src="docs/welcome.gif" alt="Skjønnhet by Denis Kunitsyn" border="0" />
 
-## Languages
+## Stack
 
-This project is built on pure [typescript](https://www.typescriptlang.org/) with the [vite](https://vitejs.dev/) builder. Almost all animations were written from scratch, for smooth scrolling was taken [locomotive scroll](https://github.com/locomotivemtl/locomotive-scroll).
+- [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/), built with [Vite](https://vitejs.dev/)
+- [React Router](https://reactrouter.com/) for pages
+- [Lenis](https://github.com/darkroomengineering/lenis) for smooth scrolling
+- SCSS modules for styles
+
+Animations are written from scratch: split-text reveals (a React port of my [AnimaView](https://github.com/sx-motive/anima-view) package), parallax, scroll-driven transforms, the image that follows the cursor and the skewed menu.
 
 <img src="docs/animations.gif" alt="Skjønnhet by Denis Kunitsyn" border="0" />
 
-also I used my own "AnimaView" npm package for split text and animate it on scroll, you can explore more about on [the AnimaView page](https://github.com/sx-motive/anima-view)
+## Pages
 
-## Install project
+| Route | What's there |
+| --- | --- |
+| `/` | Landing page with bestsellers, values and journal teaser |
+| `/shop` | Catalog with category filter and sorting (`?category=face&sort=price-asc`) |
+| `/shop/:slug` | Product page with quantity, details accordion and related products |
+| `/checkout` | Mock checkout with shipping options and order confirmation |
+| `/journal`, `/journal/:slug` | Articles with linked products |
+| `/about` | Brand story |
+
+The bag lives in `localStorage`. Product and article data is in `src/data`. Nothing is sent anywhere, the checkout only shows a confirmation.
+
+## Getting started
 
 ```
 git clone https://github.com/sx-motive/skj-nnhet.git
@@ -18,6 +34,8 @@ cd skj-nnhet
 npm install
 npm run dev
 ```
+
+`npm run build` type-checks and builds to `dist/`. The site is a SPA, so `public/_redirects` sends every route to `index.html` on Netlify.
 
 ## Last words
 

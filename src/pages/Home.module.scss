@@ -1,0 +1,340 @@
+@use '../styles/tokens' as *;
+
+section {
+  position: relative;
+  background-color: $c-bg;
+}
+
+.hero {
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroImg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    will-change: transform;
+  }
+}
+
+.heroCaption {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 760px;
+  padding: 0 1.25rem;
+  text-align: center;
+  color: $c-light;
+}
+
+.about {
+  padding: 300px 0 600px;
+
+  @include media(phone) {
+    padding: 100px 0;
+  }
+}
+
+.aboutGrid {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-block: 70px;
+
+  @include media(phone) {
+    flex-direction: column;
+    gap: 4rem;
+  }
+}
+
+.col {
+  position: relative;
+  width: 33.33%;
+
+  @include media(phone) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    position: absolute;
+    border-radius: $b-radius-small;
+    object-fit: cover;
+
+    @include media(phone) {
+      position: relative;
+      width: 50% !important;
+      inset: auto !important;
+    }
+  }
+}
+
+.aboutCaption {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+
+  @include media(phone) {
+    flex-direction: column;
+  }
+
+  :global(.btn) {
+    margin-top: 1.5rem;
+  }
+}
+
+.img1 {
+  right: 0;
+  top: 100px;
+  width: 100%;
+  aspect-ratio: 1 / 0.65;
+  z-index: 1;
+  rotate: -10deg;
+}
+
+.img2 {
+  left: 30px;
+  top: -170px;
+  width: calc(80% - 30px);
+  aspect-ratio: 1 / 1.5;
+  z-index: 2;
+}
+
+.img3 {
+  right: 30px;
+  top: -190px;
+  width: calc(80% - 30px);
+  aspect-ratio: 1 / 1.5;
+  z-index: 2;
+}
+
+.img4 {
+  left: 30px;
+  top: -300px;
+  width: 100%;
+  aspect-ratio: 1 / 0.65;
+  z-index: 1;
+  rotate: 10deg;
+}
+
+.video {
+  padding-top: 50px;
+  margin-block: -2px;
+
+  img {
+    height: 600px;
+    width: auto;
+    max-width: calc(100% - 2.5rem);
+    margin: 0 auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: $b-radius-small;
+  }
+}
+
+.highlight {
+  padding: 100px 0 300px;
+
+  @include media(phone) {
+    padding: 100px 0;
+
+    h3 {
+      font-size: 2rem;
+    }
+  }
+}
+
+.highlightInner {
+  max-width: 1100px;
+  text-align: center;
+
+  @include media(laptop) {
+    max-width: 900px;
+  }
+}
+
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 3rem;
+
+  h2 {
+    margin: 0;
+  }
+
+  @include media(phone) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.more {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  white-space: nowrap;
+}
+
+.bestsellers {
+  padding: 0 0 200px;
+
+  @include media(phone) {
+    padding-bottom: 100px;
+  }
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem 2rem;
+
+  @include media(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media(phone) {
+    gap: 2.5rem 1rem;
+  }
+}
+
+.gallery {
+  margin-block: -2px;
+}
+
+.galleryRow {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+
+  .galleryImg {
+    transform: rotate(calc(var(--tilt, 0deg) * -1));
+  }
+}
+
+.galleryCol {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  text-align: center;
+
+  @include media(phone) {
+    width: 100%;
+    padding: 2rem 0;
+  }
+}
+
+.galleryText {
+  max-width: 540px;
+}
+
+.galleryImg {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: $b-radius-small;
+  transform: rotate(var(--tilt, 0deg));
+}
+
+.essentials {
+  padding: 200px 0;
+  overflow: hidden;
+
+  @include media(phone) {
+    padding: 100px 0;
+  }
+}
+
+.essentialsInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+
+  @include media(laptop) {
+    gap: 1rem;
+  }
+}
+
+.news {
+  padding: 200px 0;
+  border-radius: 0 0 $b-radius-small $b-radius-small;
+
+  @include media(phone) {
+    padding: 100px 0;
+  }
+}
+
+.newsTrack {
+  display: flex;
+  gap: 3rem;
+  overflow-x: auto;
+  padding: 0 $p-layout 1rem;
+  scrollbar-width: none;
+
+  @include media(phone) {
+    gap: 1.5rem;
+    padding-inline: 1.25rem;
+  }
+}
+
+.newsCol {
+  flex: 0 0 27vw;
+
+  @include media(tablet) {
+    flex-basis: 40vw;
+  }
+
+  @include media(phone) {
+    flex-basis: 75vw;
+  }
+
+  h5 {
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+
+  p {
+    max-width: 450px;
+    padding: 0 1rem;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.newsImg {
+  height: 60vh;
+  border-radius: $b-radius-small;
+  overflow: hidden;
+
+  @include media(phone) {
+    height: 40vh;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s $anim;
+  }
+}

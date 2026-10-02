@@ -1,0 +1,101 @@
+@use '../styles/tokens' as *;
+
+.intro {
+  max-width: 1200px;
+}
+
+.title {
+  line-height: 0.85;
+  margin-top: 2rem;
+
+  @include media(laptop) {
+    font-size: $fs-caption-1 * 0.75;
+  }
+
+  @include media(phone) {
+    font-size: $fs-caption-1 * 0.5;
+  }
+}
+
+.lead {
+  max-width: 560px;
+  margin-left: auto;
+  font-size: 1.25rem;
+}
+
+.studio {
+  height: 90vh;
+  margin: 6rem $p-layout 0;
+  border-radius: $b-radius-small;
+  overflow: hidden;
+
+  @include media(phone) {
+    height: 50vh;
+    margin-inline: 1.25rem;
+  }
+
+  img {
+    width: 100%;
+    height: 130%;
+    max-width: none;
+    margin-top: -15%;
+    object-fit: cover;
+  }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  padding-block: 6rem;
+  border-bottom: 1px solid $c-border;
+
+  @include media(phone) {
+    grid-template-columns: 1fr 1fr;
+    padding-block: 3rem;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
+
+.statValue {
+  font-family: $ff-title;
+  font-size: $fs-caption-3 * 1.2;
+  letter-spacing: -0.1rem;
+  line-height: 1;
+}
+
+.statLabel {
+  color: $c-middle;
+}
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  padding-block: 6rem;
+
+  @include media(phone) {
+    grid-template-columns: 1fr;
+    padding-block: 3rem;
+  }
+}
+
+.principle p {
+  color: $c-middle;
+  max-width: 380px;
+}
+
+.index {
+  font-size: 0.85rem;
+  color: $c-middle;
+}
+
+.cta {
+  text-align: center;
+  padding-top: 4rem;
+}

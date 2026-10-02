@@ -1,0 +1,67 @@
+@use '../styles/tokens' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  padding: $p-layout;
+  background-color: $c-black;
+  color: $c-white;
+}
+
+.primary {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  font-size: $fs-caption-2;
+  letter-spacing: -0.15rem;
+  line-height: 1.05;
+
+  @include media(laptop) {
+    font-size: $fs-caption-2 * 0.7;
+  }
+
+  @include media(phone) {
+    font-size: $fs-caption-2 * 0.5;
+  }
+
+  > span,
+  &::after {
+    display: block;
+    transition: transform 1.5s $anim;
+  }
+
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    font-family: $ff-title;
+    font-size: $fs-caption-3 * 1.5;
+  }
+
+  &:hover > span,
+  &:hover::after {
+    transform: translateY(-100%);
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: $p-layout;
+  left: $p-layout;
+  display: flex;
+  gap: 1rem;
+
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}

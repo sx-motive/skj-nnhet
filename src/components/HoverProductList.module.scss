@@ -1,0 +1,103 @@
+@use '../styles/tokens' as *;
+
+.wrap {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  li {
+    padding: 20px 0;
+  }
+}
+
+.link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  font-size: $fs-caption-3 * 1.3;
+  letter-spacing: -0.15rem;
+  line-height: 1.05;
+
+  @include media(laptop) {
+    font-size: $fs-caption-3;
+  }
+
+  @include media(phone) {
+    font-size: $fs-caption-3 * 0.7;
+    letter-spacing: -0.05rem;
+  }
+
+  > span,
+  &::after {
+    display: block;
+    transition: transform 1.5s $anim;
+  }
+
+  &::after {
+    content: attr(data-caption);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    font-family: $ff-title;
+    font-size: $fs-caption-3 * 1.5;
+    color: $c-white;
+    mix-blend-mode: difference;
+
+    @include media(phone) {
+      font-size: $fs-caption-3 * 0.8;
+    }
+  }
+
+  &:hover > span,
+  &:hover::after {
+    transform: translateY(-100%);
+  }
+}
+
+.follow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 400px;
+  aspect-ratio: 3 / 3.5;
+  border-radius: $b-radius;
+  overflow: hidden;
+  pointer-events: none;
+  will-change: transform;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease-out;
+
+  @include media(laptop) {
+    width: 300px;
+  }
+
+  @include media(phone) {
+    display: none;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1);
+    transition:
+      opacity 1s $anim,
+      transform 1s $anim;
+  }
+
+  .active {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}

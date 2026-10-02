@@ -1,0 +1,19 @@
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.12em 0 0.2em;
+  margin: -0.12em 0 -0.2em;
+
+  > span {
+    display: inline-block;
+    transform: var(--from);
+    transition: transform 1s cubic-bezier(0.28, 0.81, 0.43, 0.97);
+    transition-delay: 0s;
+  }
+}
+
+.shown .word > span {
+  transform: none;
+  transition-delay: calc(0.1s + var(--delay));
+}

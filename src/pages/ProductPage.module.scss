@@ -1,0 +1,180 @@
+@use '../styles/tokens' as *;
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: start;
+
+  @include media(tablet) {
+    gap: 3rem;
+  }
+
+  @include media(phone) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.packshot,
+.lifestyle {
+  border-radius: $b-radius-small;
+  overflow: hidden;
+  aspect-ratio: 4 / 4.6;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.packshot img {
+  mix-blend-mode: multiply;
+}
+
+.info {
+  position: sticky;
+  top: 8rem;
+
+  @include media(phone) {
+    position: static;
+  }
+}
+
+.crumbs {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: $c-middle;
+
+  a:hover {
+    color: $c-black;
+  }
+}
+
+.title {
+  font-size: $fs-caption-2;
+  line-height: 0.85;
+  margin: 1.5rem 0 1rem;
+
+  @include media(laptop) {
+    font-size: $fs-caption-2 * 0.75;
+  }
+
+  @include media(phone) {
+    font-size: $fs-caption-2 * 0.6;
+  }
+}
+
+.tagline {
+  color: $c-middle;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.price {
+  font-size: 1.6rem;
+}
+
+.volume {
+  color: $c-middle;
+}
+
+.buy {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  :global(.btn) {
+    flex: 1;
+    min-width: 220px;
+    height: 3rem;
+  }
+}
+
+.accordion {
+  margin-top: 3rem;
+  border-top: 1px solid $c-border;
+}
+
+.item {
+  border-bottom: 1px solid $c-border;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s $anim;
+
+  > div {
+    overflow: hidden;
+  }
+
+  p {
+    margin: 0 0 1.25rem;
+    max-width: 520px;
+  }
+}
+
+.panelOpen {
+  grid-template-rows: 1fr;
+}
+
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 1.25rem;
+
+  li {
+    padding: 0.45rem 0.9rem;
+    border-radius: 50px;
+    background: $c-border;
+    font-size: 0.85rem;
+  }
+}
+
+.related {
+  margin-top: 10rem;
+
+  @include media(phone) {
+    margin-top: 5rem;
+  }
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem 2rem;
+
+  @include media(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media(phone) {
+    gap: 2.5rem 1rem;
+  }
+}

@@ -1,0 +1,223 @@
+@use 'tokens' as *;
+
+@font-face {
+  font-family: 'Apercu';
+  src: url('https://cdn.jsdelivr.net/gh/sx-motive/cdn@master/fonts/apercu/ApercuPro-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TimesNewRoman';
+  src: url('https://cdn.jsdelivr.net/gh/sx-motive/cdn@master/fonts/timesnewroman-cond/TimesNewRoman-Cond.woff')
+    format('woff');
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  @include media(laptop) {
+    font-size: 14px;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+html.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: $ff-default;
+  font-size: 1rem;
+  line-height: 1;
+  color: $c-black;
+  background-color: $c-black;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: $c-black;
+  color: $c-white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  font-family: $ff-title;
+  font-weight: 500;
+  letter-spacing: -0.2rem;
+  line-height: 0.75;
+  text-transform: capitalize;
+  margin: 1rem 0 2rem;
+}
+
+h1 {
+  font-size: $fs-caption-1;
+  @include media(phone) {
+    font-size: $fs-caption-1 * 0.6;
+    letter-spacing: -0.1rem;
+  }
+}
+
+h2 {
+  font-size: $fs-caption-2;
+  @include media(phone) {
+    font-size: $fs-caption-2 * 0.6;
+    letter-spacing: -0.1rem;
+  }
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: $fs-caption-3;
+  line-height: 1;
+  letter-spacing: -0.1rem;
+  @include media(phone) {
+    font-size: $fs-caption-3 * 0.7;
+  }
+}
+
+p {
+  position: relative;
+  line-height: 1.3;
+  margin: 0.7rem 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  padding-inline: $p-layout;
+  margin-inline: auto;
+  @include media(phone) {
+    padding-inline: 1.25rem;
+  }
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: $c-border;
+  color: $c-black;
+  border: none;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 1.1rem 2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s $anim,
+    color 0.2s $anim,
+    opacity 0.2s;
+  text-transform: capitalize;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $c-black;
+    color: $c-white;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  &.btn-dark {
+    background-color: $c-black;
+    color: $c-white;
+    &:hover {
+      background-color: $c-theme;
+      color: $c-black;
+    }
+  }
+
+  &.btn-block {
+    width: 100%;
+  }
+}
+
+.page {
+  position: relative;
+  background-color: $c-bg;
+  min-height: 100vh;
+  padding-top: 10rem;
+  padding-bottom: 8rem;
+  @include media(phone) {
+    padding-top: 7rem;
+  }
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $c-middle;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}

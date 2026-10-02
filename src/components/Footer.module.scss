@@ -1,0 +1,101 @@
+@use '../styles/tokens' as *;
+
+.footer {
+  position: relative;
+  background-color: $c-black;
+  color: $c-white;
+  padding: 200px 0 0;
+
+  @include media(phone) {
+    padding-top: 100px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.grid {
+  max-width: 1600px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  font-size: 0.8rem;
+
+  @include media(laptop) {
+    max-width: 1100px;
+  }
+
+  @include media(phone) {
+    grid-template-columns: 1fr;
+  }
+
+  > div,
+  > ul {
+    padding: 60px 0;
+
+    @include media(phone) {
+      padding: 20px 0;
+    }
+  }
+}
+
+.logo {
+  font-family: $ff-title;
+  font-size: 2.2rem;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-content: start;
+}
+
+.form {
+  display: flex;
+  margin-top: 1rem;
+  border-bottom: 1px solid rgba($c-white, 0.4);
+  max-width: 260px;
+
+  input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0.6rem 0;
+    min-width: 0;
+
+    &::placeholder {
+      color: rgba($c-white, 0.5);
+    }
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+}
+
+.thanks {
+  margin-top: 1rem !important;
+  color: $c-theme;
+}
+
+.credits {
+  line-height: 1.4;
+  color: rgba($c-white, 0.6);
+  overflow-wrap: anywhere;
+}
+
+.signature {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+
+  iframe {
+    border: none;
+  }
+}

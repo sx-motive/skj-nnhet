@@ -1,0 +1,36 @@
+@use 'sass:map';
+
+$breakpoints: (
+  phone: 768px,
+  tablet: 1260px,
+  laptop: 1440px,
+);
+
+@mixin media($breakpoint) {
+  @media (max-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+$ff-title: 'TimesNewRoman', serif;
+$ff-default: 'Apercu', sans-serif;
+
+$fs: 7rem;
+$fs-caption-1: $fs;
+$fs-caption-2: $fs * 0.8;
+$fs-caption-3: $fs * 0.5;
+
+$c-white: #fff;
+$c-light: #ebebeb;
+$c-black: #000;
+$c-dark: #1a1a1a;
+$c-bg: #f1ebe7;
+$c-theme: #dbbe9b;
+$c-middle: #7a7a7a;
+$c-border: #e7dfd6;
+
+$p-layout: 3rem;
+$b-radius: 2rem;
+$b-radius-small: 0.8rem;
+
+$anim: cubic-bezier(0.19, 1, 0.22, 1);

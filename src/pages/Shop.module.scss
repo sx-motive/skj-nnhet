@@ -1,0 +1,96 @@
+@use '../styles/tokens' as *;
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 4rem;
+
+  h1 {
+    margin: 0;
+  }
+
+  @include media(phone) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+}
+
+.lead {
+  max-width: 360px;
+  color: $c-middle;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  margin-bottom: 3rem;
+  border-block: 1px solid $c-border;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip,
+.activeChip {
+  padding: 0.7rem 1.3rem;
+  border-radius: 50px;
+  border: 1px solid $c-black;
+  background: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    background: $c-border;
+  }
+}
+
+.activeChip,
+.activeChip:hover {
+  background: $c-black;
+  color: $c-white;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  select {
+    background: none;
+    border: none;
+    border-bottom: 1px solid $c-black;
+    padding: 0.4rem 0;
+    cursor: pointer;
+  }
+}
+
+.count {
+  color: $c-middle;
+  font-size: 0.9rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 2rem;
+
+  @include media(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media(phone) {
+    gap: 2.5rem 1rem;
+  }
+}
