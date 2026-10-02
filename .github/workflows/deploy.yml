@@ -1,0 +1,48 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Upload to server
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          rsync -rlz --checksum --delete-delay --delay-updates \
+            -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes" \
+            dist/ skjdeploy@38.180.44.28:./
+
+      - name: Smoke test
+        run: |
+          for path in / /shop /shop/cloudberry-serum /journal/natural-sun-care; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "http://38.180.44.28$path")
+            echo "$code $path"
+            test "$code" = 200
+          done
+          asset=$(curl -s http://38.180.44.28/ | grep -o '/assets/index-[^"]*\.js')
+          test "$(curl -s -o /dev/null -w '%{http_code}' "http://38.180.44.28$asset")" = 200

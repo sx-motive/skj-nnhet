@@ -35,7 +35,7 @@ npm install
 npm run dev
 ```
 
-`npm run build` type-checks and builds to `dist/`. Deployed on Netlify from `master`. Build settings and the SPA fallback live in `netlify.toml`.
+`npm run build` type-checks and builds to `dist/`. Every push to `master` is built by GitHub Actions and synced to a VPS behind nginx (`.github/workflows/deploy.yml`). `netlify.toml` keeps the Netlify mirror working too.
 
 ## Last words
 
