@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
 
 type UiContextValue = {
   introDone: boolean;
@@ -15,17 +15,18 @@ export function UiProvider({ children }: { children: ReactNode }) {
   const [introDone, setIntroDone] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const finishIntro = useCallback(() => setIntroDone(true), []);
 
   const value = useMemo(
     () => ({
       introDone,
-      finishIntro: () => setIntroDone(true),
+      finishIntro,
       menuOpen,
       setMenuOpen,
       cartOpen,
       setCartOpen,
     }),
-    [introDone, menuOpen, cartOpen]
+    [introDone, finishIntro, menuOpen, cartOpen]
   );
 
   return <UiContext.Provider value={value}>{children}</UiContext.Provider>;
