@@ -1,5 +1,7 @@
 Skjønnhet is a demo storefront for a Nordic skincare brand, with an emphasis on animation and design. It started as a single landing page and is now a small shop with mock data: catalog, product pages, a bag, checkout and a journal.
 
+**Live demo: http://38.180.44.28**
+
 <img src="docs/welcome.gif" alt="Skjønnhet by Denis Kunitsyn" border="0" />
 
 ## Stack
@@ -41,4 +43,4 @@ npm run dev
 
 If you like the project, please rate it, big thanks! ❤️
 
-[AnimaView](https://github.com/sx-motive/anima-view) | [Website](https://aesthetic-hotteok-6e4cf2.netlify.app/)
+[Live demo](http://38.180.44.28) | [AnimaView](https://github.com/sx-motive/anima-view)
