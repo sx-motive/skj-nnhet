@@ -35,7 +35,7 @@ npm install
 npm run dev
 ```
 
-`npm run build` type-checks and builds to `dist/`. The site is a SPA, so `public/_redirects` sends every route to `index.html` on Netlify.
+`npm run build` type-checks and builds to `dist/`. Deployed on Netlify from `master`. Build settings and the SPA fallback live in `netlify.toml`.
 
 ## Last words
 
